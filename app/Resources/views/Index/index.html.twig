@@ -1,5 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block container %}
-<h1>ICI ON AURA LES ANNONCES (SISI JVOUS JURE)</h1>
+    <div>
+        <h1>Le bloc de recherche osef</h1>
+    </div>
+    <h1>Les dernières annonces</h1>
+    <div>
+        {% for Annonce in LesAnnonces %}
+            <div class="col-md-12 annonce">
+                <div class="col-md-3">
+                    <img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.bizreport.com%2F2011%2F02%2F03%2Fandroid-logo-200x200.jpg&f=1">
+                </div>
+
+                <div class="col-md-7">
+                    <h2>{{ Annonce.title }}</h2>
+                    <p> {{ Annonce.description }}</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="test">
+                        <strong>{{ Annonce.prix }} €</strong>
+                        <a class="btn btn-primary" href="{{ path('annonce_show', {'id': Annonce.id}) }}">Détails</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

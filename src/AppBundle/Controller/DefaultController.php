@@ -13,6 +13,12 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('Index/index.html.twig');
+        $LesAnnonces = $this->getDoctrine()->getManager()->getRepository('AppBundle:Annonce');
+        $LesAnnonces = $LesAnnonces->findAll();
+        return $this->render('Index/index.html.twig',
+            array(
+                'LesAnnonces' => $LesAnnonces,
+            )
+        );
     }
 }
